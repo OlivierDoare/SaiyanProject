@@ -13,4 +13,8 @@ public class Size {
 		this.abdosSize = _abdosSize;
 		this.pecsSize = _pecsSize;
 	}
+	
+	Size(){
+		super();
+	}
 }
