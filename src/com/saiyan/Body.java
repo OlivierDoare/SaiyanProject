@@ -1,8 +1,9 @@
 package com.saiyan;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Body {
+public class Body implements Serializable{
 
 		//Creation of the object : body
 		String personName;
@@ -12,8 +13,10 @@ public class Body {
 		Level personLevel;
 		int points;
 		
-		// This function is called when the user has no account already
-		public Body firstTime(){
+
+
+		//Constructor with no fields used only once
+		public Body() {
 			//ask for the name, age and weight
 			Scanner reader = new Scanner(System.in);
 			System.out.println("Quel est ton nom ?");
@@ -22,30 +25,9 @@ public class Body {
 			int age = reader.nextInt();
 			System.out.println("Quel est ton poids ?");
 			int weight = reader.nextInt();
-			//Creation of the body (add a session counter in the body)
-			Body body = new Body(name, age, weight);
-			return body;
-		}
-
-	
-		Body(String _name, int _age, int _weight){
-			this.personName = _name;
-			this.personAge = _age;
-			this.personWeight = _weight;
-			this.personLevel = null;
-			this.personSize = null;
-			this.points = 0;
-		}
-		
-		
-
-		//Constructor with no fields
-		public Body() {
-			
-			Body body = firstTime();
-			this.personAge = body.personAge;
-			this.personName = body.personName;
-			this.personWeight = body.personWeight;
+			this.personAge = age;
+			this.personName = name;
+			this.personWeight = weight;
 			this.personLevel = new Level();
 			this.personSize = new Size();
 			this.points = 0;
@@ -54,8 +36,8 @@ public class Body {
 
 		@Override
 		public String toString() {
-			return "Body [personName=" + personName + ", personAge=" + personAge + ", personWeight=" + personWeight
-					+ ", personSize=" + personSize + ", personLevel=" + personLevel + ", points=" + points + "]";
+			return "Body \npersonName=" + personName + "\npersonAge=" + personAge + "\npersonWeight=" + personWeight
+					+ "\npersonSize=" + personSize + "\npersonLevel=" + personLevel + "\npoints=" + points;
 		}
 		
 		

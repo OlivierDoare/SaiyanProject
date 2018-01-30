@@ -1,6 +1,8 @@
 package com.saiyan;
 
-public class Level {
+import java.io.Serializable;
+
+public class Level implements Serializable{
 	
 	int generalLevel;
 	int upLevel;

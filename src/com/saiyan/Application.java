@@ -8,7 +8,42 @@ public class Application {
 	public static void main(String[] args) {
 		
 		//Serealization !!! CHeck if the user has an account already
-		Body body = new Body(); 
+		Body body = null;
+		try {
+	         FileInputStream fileIn = new FileInputStream("body.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         body = (Body) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      } catch (ClassNotFoundException c) {
+	         System.out.println("Employee class not found");
+	         c.printStackTrace();
+	         return;
+	      } catch (FileNotFoundException f) {//If no account, then create one
+	    	  System.out.println("première fois !");
+	    	  body = new Body();
+	    	  
+	    	  try {
+	    		  File myBody = new File("body.ser");
+	    		  myBody.createNewFile();
+	    	         FileOutputStream fileOut =
+	    	         new FileOutputStream("body.ser");
+	    	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	    	         out.writeObject(body);
+	    	         out.close();
+	    	         fileOut.close();
+	    	         System.out.printf("Serialized data is saved in body.ser");
+	    	      } catch (IOException i) {
+	    	         i.printStackTrace();
+	    	      }
+	    	  Application.main(args);
+	    	  return;
+	      } catch (IOException i) {
+	    	  i.printStackTrace();
+	    	  return;
+	      }
+		
+		
 		System.out.println(body.toString());
 		
 		//setting the start parameters
