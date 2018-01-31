@@ -1,6 +1,5 @@
 package com.saiyan;
 
-import java.util.Scanner;
 import java.io.*;
 
 public class Application {
@@ -24,7 +23,7 @@ public class Application {
 	    	  body = new Body();
 	    	  
 	    	  try {
-	    		  File myBody = new File("body.ser");
+	    		  File myBody = new File("body.ser");//Creating the new file (2lines)
 	    		  myBody.createNewFile();
 	    	         FileOutputStream fileOut =
 	    	         new FileOutputStream("body.ser");
@@ -45,6 +44,7 @@ public class Application {
 		
 		
 		System.out.println(body.toString());
+		Session session = new Session(body);
 		
 		//setting the start parameters
 		//olivier.Size.armSize = 23;

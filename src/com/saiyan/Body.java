@@ -12,6 +12,7 @@ public class Body implements Serializable{
 		Size personSize;
 		Level personLevel;
 		int points;
+		int sessionId;
 		
 
 
@@ -31,6 +32,7 @@ public class Body implements Serializable{
 			this.personLevel = new Level();
 			this.personSize = new Size();
 			this.points = 0;
+			this.sessionId = 0;
 		}
 
 
